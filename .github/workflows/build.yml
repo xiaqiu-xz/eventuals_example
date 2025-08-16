@@ -35,3 +35,7 @@ jobs:
       - name: Run test4
         run: bazel run :test4
         shell: bash
+
+      - name: Run test5
+        run: bazel run :test5
+        shell: bash
