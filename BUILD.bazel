@@ -1,0 +1,14 @@
+# 加载 rules_cc 提供的 cc_library / cc_binary 定义
+load("@rules_cc//cc:defs.bzl", "cc_library")
+
+# 定义一个 C++ 可执行文件 target
+cc_binary(
+    name = "main",             # 可执行文件的名字
+    srcs = ["main.cpp"],       # 源文件列表
+    deps = [
+        # 依赖的外部库，这里依赖 eventuals 库
+        "@com_github_3rdparty_eventuals//eventuals",
+    ],
+    # 注意：至少在 macOS 上不能静态链接，因为某些系统库需要动态加载
+    linkstatic = False,
+)

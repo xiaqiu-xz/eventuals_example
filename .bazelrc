@@ -1,0 +1,20 @@
+# 启用平台特定的配置
+build --enable_platform_specific_config
+
+# macOS 平台编译选项，使用 C++17 标准
+build:macos --cxxopt='-std=c++17'
+
+# Linux 平台编译选项，使用 C++17 标准
+build:linux --cxxopt='-std=c++17'
+
+# Windows 平台编译选项，使用 C++17 标准
+build:windows --cxxopt="/std:c++17"
+
+# Windows 平台指定使用 clang-cl 编译器
+build:windows --compiler="clang-cl"
+
+# 设置动作环境变量，指定 C 编译器为 clang
+build --action_env=CC=clang
+
+# 允许用户加载本地的额外配置（可选）
+try-import %workspace%/user.bazelrc

@@ -1,0 +1,2 @@
+# 设置 Bazel 使用的版本为 5.1.1
+USE_BAZEL_VERSION=5.1.1

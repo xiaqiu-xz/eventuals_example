@@ -1,0 +1,43 @@
+# 定义当前 Bazel workspace 名称
+workspace(name = "com_github_3rdparty_eventuals_grpc_examples")
+
+########################################################################
+# 加载 Bazel 自带的 git_repository 函数，用于从 Git 仓库拉取代码
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+
+########################################################################
+# 定义 eventuals 库的 Git 仓库
+git_repository(
+    name = "com_github_3rdparty_eventuals",                # 仓库名称
+    commit = "8f304ccf696b823c6b7179157150f83e91b46496",  # 指定 commit 哈希
+    recursive_init_submodules = True,                      # 递归初始化子模块
+    remote = "https://github.com/3rdparty/eventuals",     # Git 仓库地址
+    shallow_since = "1706226227 +0100",                   # shallow clone 截止时间
+)
+
+# 加载 eventuals 的 submodules 定义
+load("@com_github_3rdparty_eventuals//bazel:submodules.bzl", eventuals_submodules = "submodules")
+
+# 调用 submodules 初始化 eventuals 的子模块
+eventuals_submodules()
+
+# 加载 eventuals 仓库依赖定义
+load("@com_github_3rdparty_eventuals//bazel:repos.bzl", eventuals_repos = "repos")
+
+# 初始化 eventuals 的外部依赖
+eventuals_repos()
+
+# 加载 eventuals 的其他依赖
+load("@com_github_3rdparty_eventuals//bazel:deps.bzl", eventuals_deps = "deps")
+
+# 注册 eventuals 的依赖到 Bazel
+eventuals_deps()
+
+########################################################################
+# 加载 gRPC 额外依赖函数
+load("@com_github_grpc_grpc//bazel:grpc_extra_deps.bzl", "grpc_extra_deps")
+
+# 初始化 gRPC 的额外依赖
+grpc_extra_deps()
+
+########################################################################
