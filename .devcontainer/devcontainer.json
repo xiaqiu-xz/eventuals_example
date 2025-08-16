@@ -1,0 +1,7 @@
+{
+    "name": "Bazel C++ Dev",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "workspaceFolder": "/workspace"
+}

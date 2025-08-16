@@ -14,12 +14,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # - name: Build all examples
-      #   run: bazel build ...
-      #   shell: bash
-     # 只编译 main target
-      - name: Build main
-        run: bazel build :main --verbose_failures
+      - name: Build all examples
+        run: bazel build ...
         shell: bash
 
       # 运行 main 可执行文件
