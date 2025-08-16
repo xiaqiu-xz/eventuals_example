@@ -1,0 +1,18 @@
+{
+    // 禁用 VSCode 内置的 C/C++ IntelliSense 引擎，使用 clangd 提供智能提示
+    "C_Cpp.intelliSenseEngine": "disabled",
+    // clangd 可执行文件路径
+    "clangd.path": "/usr/bin/clangd",
+    // clangd 启动参数
+    "clangd.arguments": [
+        "--enable-config", // 允许 clangd 读取 .clangd 配置文件
+        "-log=verbose", // 输出详细日志，便于调试
+        "-pretty", // 美化输出日志格式
+        "--background-index", // 启用后台索引，提高补全和跳转性能
+        "--pch-storage=memory", // 将预编译头存储在内存中，加快编译速度
+        "--compile-commands-dir=${workspaceFolder}/", // 指定 compile_commands.json 文件所在目录
+        "--header-insertion=never", // 禁止 clangd 自动插入头文件
+        "--function-arg-placeholders=true", // 补全函数参数时生成占位符
+        "--clang-tidy" // 启用 clang-tidy 检查
+    ]
+}

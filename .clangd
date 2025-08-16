@@ -1,0 +1,70 @@
+CompileFlags:
+  Add:
+    # - -std=c++23
+    - -ferror-limit=0
+    - -Xclang
+    - -fretain-comments-from-system-headers
+    - -DGSL_USE_STD_BYTE=1
+    - -DGSL_TERMINATE_ON_CONTRACT_VIOLATION=1
+    - -Wlifetime
+    - -Wdangling
+Hover:
+  ShowAKA: true
+
+InlayHints:
+  Enabled: Yes
+  BlockEnd: No
+  Designators: No
+  ParameterNames: Yes
+  DeducedTypes: Yes
+  TypeNameLimit: 0
+
+Diagnostics:
+  UnusedIncludes: Strict
+  ClangTidy:
+    FastCheckFilter: Strict
+    Add:
+      # - clang-diagnostic-*
+      # - clang-analyzer-*
+      # - performance-*
+      # - readability-*
+      # - bugprone-*
+      # - misc-*
+    ###################################################
+    # 这个readability 会导致很多magic number的警告
+    # 这个readability 会导致很多magic number的警告
+    # - cppcoreguidelines-*
+    # - modernize-* 这个有可能会导致clang崩溃
+    ###################################################
+    Remove:
+      - performance-avoid-endl
+      - cppcoreguidelines-pro-bounds-array-to-pointer-decay
+      - cppcoreguidelines-pro-bounds-constant-array-index
+      - cppcoreguidelines-pro-bounds-pointer-arithmetic
+      - cppcoreguidelines-pro-type-const-cast
+      - cppcoreguidelines-pro-type-cstyle-cast
+      - cppcoreguidelines-pro-type-reinterpret-cast
+      - cppcoreguidelines-pro-type-union-access
+      - cppcoreguidelines-pro-type-vararg
+      - cppcoreguidelines-owning-memory
+      - cppcoreguidelines-no-malloc
+      - cppcoreguidelines-prefer-member-initializer
+      - modernize-use-trailing-return-type
+      - modernize-use-using
+      - readability-avoid-unconditional-preprocessor-if
+      - readability-identifier-length
+      - readability-implicit-bool-conversion
+      - readability-isolate-declaration
+      - readability-magic-numbers
+      - readability-qualified-auto
+      - readability-suspicious-call-argument
+      - misc-non-private-member-variables-in-classes
+    # CheckOptions:
+    #   readability-function-cognitive-complexity.Threshold: 25
+    #   readability-function-cognitive-complexity.IgnoreMacros: true
+    #   cppcoreguidelines-avoid-magic-numbers.IgnoredIntegerValues: "-1;0;1;2"
+    #   cppcoreguidelines-avoid-magic-numbers.IgnoredFloatingPointValues: "0.0;1.0"
+
+Index:
+  Background: Build
+  StandardLibrary: No
