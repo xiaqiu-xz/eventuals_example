@@ -22,3 +22,8 @@ jobs:
       - name: Run main
         run: bazel run :main
         shell: bash
+
+      # 运行 main 可执行文件
+      - name: Run test2
+        run: bazel run :test2
+        shell: bash

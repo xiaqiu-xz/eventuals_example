@@ -12,3 +12,18 @@ cc_binary(
     # 注意：至少在 macOS 上不能静态链接，因为某些系统库需要动态加载
     linkstatic = False,
 )
+
+
+# 定义一个 C++ 可执行文件 target
+cc_binary(
+    name = "test2",             # 可执行文件的名字
+    srcs = ["test2.cpp"],       # 源文件列表
+    deps = [
+        # 依赖的外部库，这里依赖 eventuals 库
+        "@com_github_3rdparty_eventuals//eventuals",
+    ],
+    # 注意：至少在 macOS 上不能静态链接，因为某些系统库需要动态加载
+    linkstatic = False,
+)
+
+# bazel build -c dbg :test2
