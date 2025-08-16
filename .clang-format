@@ -1,0 +1,8 @@
+BasedOnStyle: Google # 或者其他基础风格，比如 LLVM、Mozilla 等
+IndentWidth: 4       # 缩进宽度
+TabWidth: 4          # Tab 显示宽度
+UseTab: Never        # 使用空格代替 Tab
+ColumnLimit: 100     # 设置最长换行长度为 120 个字符
+BreakBeforeBraces: Attach # 大括号样式
+SortIncludes: false
+AccessModifierOffset: -4           # 类访问修饰符（public/private）缩进的偏移

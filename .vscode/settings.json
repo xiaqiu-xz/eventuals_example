@@ -14,5 +14,139 @@
         "--header-insertion=never", // 禁止 clangd 自动插入头文件
         "--function-arg-placeholders=true", // 补全函数参数时生成占位符
         "--clang-tidy" // 启用 clang-tidy 检查
-    ]
+    ],
+    "editor.renderWhitespace": "all",
+    "code-runner.executorMap": {
+        "python": "python3 -u"
+    },
+    "workbench.colorCustomizations": {
+        // 新增文本的背景颜色
+        "diffEditor.insertedTextBackground": "#00501388", // 浅绿色，带透明度
+        // 删除文本的背景颜色
+        "diffEditor.removedTextBackground": "#62000088", // 浅红色，带透明度
+        // 修改区域的边框颜色（可选）
+    },
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": [
+                    //following will be in italic
+                    "function",
+                    "entity.name.type.class", //class names
+                    "constant", //String, Number, Boolean…, this, super
+                    "keyword",
+                    "storage"
+                ],
+                "settings": {
+                    "fontStyle": "bold",
+                    // "foreground": "#240ab4"
+                }
+            },
+            {
+                "scope": "comment",
+                "settings": {
+                    // "fontStyle": "italic",
+                    "foreground": "#0ca523"
+                }
+            },
+            {
+                "scope": [
+                    "entity.name.type.class"
+                ],
+                "settings": {
+                    "foreground": "#03A1FE",
+                    "fontStyle": "bold"
+                },
+            },
+            {
+                "scope": "entity.name.function", // 定义函数调用的范围
+                "settings": {
+                    // "foreground": "#d58728f7",
+                    "fontStyle": "bold",
+                }
+            }
+        ],
+    },
+    "editor.formatOnSave": true,
+    "editor.fontFamily": "Fira Code",
+    "editor.guides.bracketPairs": true,
+    "cmake.debugConfig": {
+        "console": "internalConsole"
+    },
+    "cmake.ctestArgs": [],
+    "filewatcher.commands": [ //需安装file watcher 插件
+        // {
+        //     "match": "\\.(c|cpp|h|cxx|ixx|hpp)$",
+        //     "cmd": "bazel build -c dbg :main",
+        //     "runInBackground": false,
+        //     "event": "onFileChange"
+        // },
+        {
+            "match": "markdown.md",
+            // "cmd": "sed -i -E \"s/[\\]\\( +/$/g; s/ +[\\]\\)/$/g; s/[\\]\\]/$$/g; s/[\\]\\[/$$/g; s/[\\]\\(/$/g; s/[\\]\\)/$/g \" ${file}",
+            // "cmd": "sed -i -E \"s/[\\]\\( +/\\$/g; s/ +[\\]\\)/\\$/g; s/[\\]\\]/\\$\\$/g; s/[\\]\\[/\\$\\$/g; s/[\\]\\(/\\$/g; s/[\\]\\)/\\$/g\" \"${file}\"",
+            "cmd": "sed -i -E \"/^---$/d\" \"${file}\"",
+            "event": "onFileChange"
+        },
+        {
+            "match": "markdown.md|\\.(md)$",
+            "cmd": "sed -i -E \"/^[[:space:]]*$/d;s/(^[[:space:]]*>.*)/\\1\\n/ \" \"${file}\"",
+            // "cmd": "sed -i -E \"/^---$/d\" \"${file}\"",
+            "event": "onFileChange"
+        },
+        {
+            "match": "\\.(c|cpp|h|cxx|ixx|hpp|cs)$",
+            "cmd": "sed -i -E \"/^[[:space:]]*$/d; \" \"${file}\"",
+            // "cmd": "sed -i -E \"/^---$/d\" \"${file}\"",
+            "event": "onFileChange"
+        },
+        {
+            "match": "markdown.md|\\.(md)$",
+            "cmd": "sed -i -E \"s/[🔄🧑‍💻💨🔶🎮☎🧬👇🔚🕹⬆🔢😅🔌🚧🪵🔐🪟🛡🧼♻🤯😞💼🔸🏷🌰♾🏝️🎨➕🧾🔨🖱🎓😓⚪📢🧷✋🔤👷🚗🚩📡🎬🟠📐📮🔮🤝✍🗑🔼📘👆🔽👤📈🖥🍳🧰🚦🔀📉✈🏭📊🧮🎲⛔✔🌐🚫📝🍏🎭🤓📁📎🔷🟢👈🗃🌍💀🟥🔖🧊📞🧨😩📅😮📬💪📟◼🔘🎼🧟🎛🏥🎚🎙🌡🐦🚪🙌🥈🥉🥇📱😖🐺🪄🪫🚷🍶🪞🏁♂🔔🍴➤🍽🟣🔩🚛🧹🖼📤💣📋🙈📩🧱🌋⭐😰🔕📶⚠️🔋😫😣⌨🧙🐚🙅🦠🗄⚠️💹❄📆📍🟨❗⬅🎁🌉🌈🖨😱⌛👓📦📣📥🕒🔺🧘✨➖⏰🌦📜🗂🔬🧓⚡💾🆕😜🧲🧯🚨🕐🕓👥👉💰📖🆚❓🐍🔑💬👨🔴🌱●🌲😈😂🧐🟩⛳☝🪶🌪⚖📂🧭⏱🔙🧵📚🕰🐧📏⚙🛩✅🛑❌🙂🐌🚚🐢☠🟡🔊💸🎵🧺🔣🍎😨🌿🧩🏗🧠🐣🤔💡🏢🕵🐞🏆📌🪓🔥🚘🚀🎧🎯💥😎🎉👀🤖👋⏳👍🔒📄🔓🌀👎🔍🛠🧪🔧⚠️📛🔗🔁🌳🌟🔎🔹]//g  \" \"${file}\"",
+            // "cmd": "sed -i -E \"s/✅//g;s/❌//g;s/🧩//g;s/🧠//g;s/💡//g;s/🐞//g;s/📌//g;  \" \"${file}\"",
+            // "cmd": "sed -i -E \":a;N;$!ba;s/(\\n[[:space:]]*){2,}/\\n\\n/g\" \"${file}\"",
+            // "cmd": "sed -i -E \"/^---$/d\" \"${file}\"",
+            "event": "onFileChange"
+        },
+        {
+            "match": "markdown.md",
+            "isAsync": true,
+            // "cmd": "sed -n  \"1s/^# //; 1h; /^# /{H;};  ${g; s/\\n/:/g; s/:.*:/:/; p;}\" ${file} > ${currentWorkspace}/commit-msg-template.txt",
+            "cmd": "sed -n \"1s/^# //; 1h; /^# /{H;}; \\$ {g; s/\\\\n/:/g; s/:.*:/:/; p;}\" \"${file}\" > \"${currentWorkspace}/commit-msg-template.txt\"",
+            "event": "onFileChange"
+        },
+        {
+            "match": "markdown.md",
+            "cmd": "sed -i -E \"s/[\\]\\( +/$/g; s/ +[\\]\\)/$/g; s/[\\]\\]/$$/g; s/[\\]\\(/$/g; s/[\\]\\)/$/g\" \"${file}\"",
+            "event": "onFileChange"
+        },
+        {
+            "match": "markdown.md",
+            "cmd": "sed -i -E \"s/[\\]\\( +/$/g; s/ +[\\]\\)/$/g; s/[\\]\\]/$$/g; s/[\\]\\(/$/g; s/[\\]\\)/$/g;s/和翻译//g;s/翻译//g;s/中文//g; s/中文注释/注释/g; s/中文理解/理解/g; s/中文总结/总结/g; s/中文解释/解释/g\" \"${file}\"",
+            "event": "onFileChange"
+        }
+    ],
+    "[markdown]": {
+        "editor.unicodeHighlight.ambiguousCharacters": false,
+        "editor.unicodeHighlight.invisibleCharacters": false,
+        "diffEditor.ignoreTrimWhitespace": false,
+        "editor.wordWrap": "on",
+        "editor.formatOnSave": false,
+        "editor.quickSuggestions": {
+            "comments": "off",
+            "strings": "off",
+            "other": "off"
+        }
+    }
 }
+////////////////////////////////////////////////////////////
+// - **${workspaceRoot}**: 不区分大小写的工作区根目录路径
+// - **${workspaceRelativeDir}**: 不区分大小写的相对工作区根目录的文件路径
+// - **${currentWorkspace}**: 不区分大小写的当前工作文件夹路径
+// - **${currentRelativeWorkspace}**: 不区分大小写的相对于当前工作文件夹的文件路径
+// - **${file}**: 正在跟踪的文件的路径
+// - **${fileOld}**: 重命名时正在跟踪的文件的路径
+// - **${fileBasename}**: 保存的文件的文件名（不包含路径）
+// - **${fileDirname}**: 正在跟踪的文件的目录名
+// - **${fileExtname}**: 正在跟踪的文件的扩展名（包括点“.”）
+// - **${fileBasenameNoExt}**: 正在跟踪的文件的文件名，不包含扩展名
