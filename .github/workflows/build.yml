@@ -39,3 +39,7 @@ jobs:
       - name: Run test5
         run: bazel run :test5
         shell: bash
+
+      - name: Run test6
+        run: bazel run :test6
+        shell: bash
