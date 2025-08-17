@@ -47,3 +47,7 @@ jobs:
       - name: Run test7
         run: bazel run :test7
         shell: bash
+
+      - name: Run test8
+        run: bazel run :test8
+        shell: bash

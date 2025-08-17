@@ -5,7 +5,7 @@
             "name": "Debug main", // 调试配置名称，在 VS Code 中显示
             "type": "cppdbg", // 调试类型，C/C++ 调试器（需要安装 C/C++ 扩展）
             "request": "launch", // 调试请求类型，launch 表示启动可执行文件
-            "program": "${workspaceFolder}/bazel-bin/test7", // 要调试的可执行文件路径（Bazel 编译输出）
+            "program": "${workspaceFolder}/bazel-bin/test8", // 要调试的可执行文件路径（Bazel 编译输出）
             "args": [], // 传递给程序的命令行参数
             "stopAtEntry": false, // 是否在程序入口处停止
             "cwd": "${workspaceFolder}", // 调试时的工作目录
