@@ -51,3 +51,7 @@ jobs:
       - name: Run test8
         run: bazel run :test8
         shell: bash
+
+      - name: Run test9
+        run: bazel run :test9
+        shell: bash
