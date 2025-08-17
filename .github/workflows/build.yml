@@ -82,3 +82,8 @@ jobs:
       - name: Run test15
         run: bazel run :test15
         shell: bash
+
+
+      - name: Run test16
+        run: bazel run :test16
+        shell: bash
