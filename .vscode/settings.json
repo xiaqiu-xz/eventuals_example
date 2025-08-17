@@ -75,12 +75,6 @@
     },
     "cmake.ctestArgs": [],
     "filewatcher.commands": [ //需安装file watcher 插件
-        // {
-        //     "match": "\\.(c|cpp|h|cxx|ixx|hpp)$",
-        //     "cmd": "bazel build -c dbg :main",
-        //     "runInBackground": false,
-        //     "event": "onFileChange"
-        // },
         {
             "match": "markdown.md",
             // "cmd": "sed -i -E \"s/[\\]\\( +/$/g; s/ +[\\]\\)/$/g; s/[\\]\\]/$$/g; s/[\\]\\[/$$/g; s/[\\]\\(/$/g; s/[\\]\\)/$/g \" ${file}",
@@ -123,6 +117,20 @@
         {
             "match": "markdown.md",
             "cmd": "sed -i -E \"s/[\\]\\( +/$/g; s/ +[\\]\\)/$/g; s/[\\]\\]/$$/g; s/[\\]\\(/$/g; s/[\\]\\)/$/g;s/和翻译//g;s/翻译//g;s/中文//g; s/中文注释/注释/g; s/中文理解/理解/g; s/中文总结/总结/g; s/中文解释/解释/g\" \"${file}\"",
+            "event": "onFileChange"
+        },
+        {
+            "match": "\\.(c|cpp|h|cxx|ixx|hpp)$",
+            // "cmd": "cd /workspace/eventuals_example && ./bazel-bin/${fileBasenameNoExt}",
+            "cmd": "cd /workspace/eventuals_example && bazel build -c dbg :${fileBasenameNoExt} 2>&1",
+            "runInBackground": true,
+            "event": "onFileChange"
+        },
+        {
+            "match": "\\.(c|cpp|h|cxx|ixx|hpp)$",
+            // "cmd": "cd /workspace/eventuals_example && ./bazel-bin/${fileBasenameNoExt}",
+            "cmd": "cd /workspace/eventuals_example && ./bazel-bin/${fileBasenameNoExt}",
+            "runInBackground": true,
             "event": "onFileChange"
         }
     ],

@@ -63,3 +63,7 @@ jobs:
       - name: Run test11
         run: bazel run :test11
         shell: bash
+
+      - name: Run test12
+        run: bazel run :test12
+        shell: bash
